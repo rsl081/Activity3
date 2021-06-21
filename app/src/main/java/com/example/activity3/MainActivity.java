@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, UrlOFOpenWeatherMap(), null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response)
-            { Json(response);}
+            { Json(response); Toast.makeText(MainActivity.this, "Good City!", Toast.LENGTH_LONG).show();}
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             JSONObject object3 = response.getJSONObject("sys");
             String country = object3.getString("country");
 
-            printTemperature.setText("Temperature"+tempeConversion.toString().substring(0,5) + " C");
+            printTemperature.setText("Temperature: "+tempeConversion.toString().substring(0,5) + " C");
             printHumidity.setText("Humidity: "+ humidity);
             printWindSpeed.setText("Wind Speed: " + speed);
             printCountry.setText("Country: " + country);
